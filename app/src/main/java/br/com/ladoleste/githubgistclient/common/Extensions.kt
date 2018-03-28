@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import br.com.ladoleste.githubgistclient.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -35,4 +38,10 @@ fun String.toHtml(): Spanned {
 fun Date.toString(format: String): String {
     val dateFormat = SimpleDateFormat(format, Locale.getDefault())
     return dateFormat.format(this)
+}
+
+fun Throwable?.getErrorMessage() = when (this) {
+    is SocketTimeoutException -> R.string.no_connection
+    is UnknownHostException -> R.string.no_connection
+    else -> R.string.generic_error
 }
