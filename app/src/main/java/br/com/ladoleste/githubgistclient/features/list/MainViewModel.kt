@@ -1,6 +1,5 @@
 package br.com.ladoleste.githubgistclient.features.list
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import br.com.ladoleste.githubgistclient.common.CustomApplication
 import br.com.ladoleste.githubgistclient.dto.GistResponse
@@ -18,11 +17,11 @@ class MainViewModel : BaseViewModel() {
     @Inject
     lateinit var repo: GistRepository
 
-    private val _gists = MutableLiveData<List<GistResponse>>()
-    private val _gistsError = MutableLiveData<Throwable>()
+    val created = MutableLiveData<String>()
+    val url = MutableLiveData<String>()
 
-    var gists: LiveData<List<GistResponse>> = _gists
-    var gistsError: LiveData<Throwable> = _gistsError
+    val gists = MutableLiveData<GistResponse>()
+    val gistsError = MutableLiveData<Throwable>()
 
     init {
         CustomApplication.component.inject(this)
@@ -32,8 +31,10 @@ class MainViewModel : BaseViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnError({ t -> Timber.e(t) })
             .subscribe({
-                _gists.postValue(it)
+                created.postValue(it.first().created)
+                url.postValue(it.first().url)
+                gists.postValue(it.first())
             }, {
-                _gistsError.postValue(it)
+                gistsError.postValue(it)
             }))
 }

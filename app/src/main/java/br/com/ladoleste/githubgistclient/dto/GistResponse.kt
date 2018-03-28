@@ -1,5 +1,6 @@
 package br.com.ladoleste.githubgistclient.dto
 
+import br.com.ladoleste.githubgistclient.common.toString
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -18,7 +19,7 @@ data class GistResponse(
         @SerializedName("html_url") val htmlUrl: String,
         @SerializedName("files") val files: Files,
         @SerializedName("public") val public: Boolean,
-        @SerializedName("created_at") val createdAt: Date,
+        @SerializedName("created_at") private val createdAt: Date,
         @SerializedName("updated_at") val updatedAt: Date,
         @SerializedName("description") val description: String,
         @SerializedName("comments") val comments: Int,
@@ -28,4 +29,6 @@ data class GistResponse(
         @SerializedName("forks") val forks: List<Any>,
         @SerializedName("history") val history: List<History>,
         @SerializedName("truncated") val truncated: Boolean
-)
+) {
+    val created get() = createdAt.toString("dd/MM/yyyy HH:mm")
+}
