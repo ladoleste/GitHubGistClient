@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import br.com.ladoleste.githubgistclient.R
+import br.com.ladoleste.githubgistclient.common.addFragment
 import br.com.ladoleste.githubgistclient.common.getErrorMessage
+import br.com.ladoleste.githubgistclient.common.replaceFragment
 import br.com.ladoleste.githubgistclient.common.toString
 import br.com.ladoleste.githubgistclient.dto.GistResponse
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,6 +21,9 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var viewModel: MainViewModel
+    private val fragMain = MainFragment()
+    private val fragFav = FavoritesFragment()
+    private val fragAbout = AboutFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         navigation.setOnNavigationItemSelectedListener(this)
         setSupportActionBar(toolbar)
+
+        addFragment(fragMain, R.id.container)
 
         viewModel.gists.observe(this, Observer {
             loading.visibility = View.GONE
@@ -49,7 +56,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun showList(it: List<GistResponse>?) {
         it?.let {
-            message.text = it.first().createdAt.toString("dd/MM/yyyy HH:mm")
+            fragMain.showMessage(it.first().createdAt.toString("dd/MM/yyyy HH:mm"))
             Timber.d(it.first().toString())
         } ?: Timber.d("Empty")
     }
@@ -67,15 +74,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                replaceFragment(fragMain, R.id.container)
                 return true
             }
-            R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
+            R.id.navigation_favorites -> {
+                replaceFragment(fragFav, R.id.container)
                 return true
             }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+            R.id.navigation_about -> {
+                replaceFragment(fragAbout, R.id.container)
                 return true
             }
         }

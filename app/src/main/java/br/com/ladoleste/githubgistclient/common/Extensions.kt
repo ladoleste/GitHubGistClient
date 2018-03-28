@@ -2,6 +2,10 @@ package br.com.ladoleste.githubgistclient.common
 
 import android.app.Activity
 import android.os.Build
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
+import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.text.Spanned
 import android.view.LayoutInflater
@@ -44,4 +48,17 @@ fun Throwable?.getErrorMessage() = when (this) {
     is SocketTimeoutException -> R.string.no_connection
     is UnknownHostException -> R.string.no_connection
     else -> R.string.generic_error
+}
+
+inline fun FragmentManager.transaction(func: FragmentTransaction.() -> FragmentTransaction) {
+    beginTransaction().func().commit()
+}
+
+fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
+    supportFragmentManager.transaction { add(frameId, fragment) }
+
+}
+
+fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
+    supportFragmentManager.transaction { replace(frameId, fragment) }
 }
