@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,20 +26,19 @@ class MainFragment : Fragment(), ItemClick {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var gistAdapter: GistAdapter
-    private lateinit var loadingScrollListener: LoadingScrollListener
-    private var loadingEnabled = false
     private lateinit var model: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.setLifecycleOwner(this)
-        var page = 1
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.rvListing.layoutManager = linearLayoutManager
-        binding.rvListing.setHasFixedSize(true)
-        loadingScrollListener = LoadingScrollListener({
-            model.loadGists(++page)
-        }, linearLayoutManager)
+//        binding.rvListing.setHasFixedSize(true)
+        binding.rvListing.addOnScrollListener(object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                model.loadGists(page)
+            }
+        })
         return binding.root
     }
 
@@ -69,17 +69,12 @@ class MainFragment : Fragment(), ItemClick {
     }
 
     private fun showList(it: List<Gist>?) {
-        binding.rvListing.clearOnScrollListeners()
-        if (loadingEnabled)
-            binding.rvListing.addOnScrollListener(loadingScrollListener)
 
         it?.let {
             if (binding.rvListing.adapter == null) {
                 gistAdapter = GistAdapter(it, this)
                 binding.rvListing.adapter = gistAdapter
-                loadingScrollListener.loading = false
             } else {
-                loadingScrollListener.loading = false
                 gistAdapter.updateItems(it)
             }
         }

@@ -8,7 +8,13 @@ import br.com.ladoleste.githubgistclient.databinding.ItemGistBinding
 import br.com.ladoleste.githubgistclient.dto.Gist
 
 
-class GistAdapter(private var items: List<Gist>, private val itemClick: ItemClick) : RecyclerView.Adapter<GistAdapter.ViewHolder>() {
+class GistAdapter(_items: List<Gist>, private val itemClick: ItemClick) : RecyclerView.Adapter<GistAdapter.ViewHolder>() {
+
+    private val items = mutableListOf<Gist>()
+
+    init {
+        items.addAll(_items)
+    }
 
     override fun getItemCount() = items.size
 
@@ -33,13 +39,7 @@ class GistAdapter(private var items: List<Gist>, private val itemClick: ItemClic
     }
 
     fun updateItems(it: List<Gist>) {
-
-        if (items.count() == it.count()) {
-            items = it
-            notifyItemRangeChanged(0, it.count() - 1)
-        } else {
-            items = it
-            notifyDataSetChanged()
-        }
+        items.addAll(it)
+        notifyDataSetChanged()
     }
 }
