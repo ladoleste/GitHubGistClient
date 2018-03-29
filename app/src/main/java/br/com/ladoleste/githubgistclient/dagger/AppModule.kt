@@ -1,7 +1,7 @@
 package br.com.ladoleste.githubgistclient.dagger
 
 import br.com.ladoleste.githubgistclient.BuildConfig
-import br.com.ladoleste.githubgistclient.common.Api
+import br.com.ladoleste.githubgistclient.common.GistService
 import br.com.ladoleste.githubgistclient.repository.GistRepository
 import br.com.ladoleste.githubgistclient.repository.NetworkGistRepositoryImpl
 import com.facebook.stetho.okhttp3.StethoInterceptor
@@ -46,7 +46,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideApi(gson: Gson, client: OkHttpClient): Api {
+    fun provideApi(gson: Gson, client: OkHttpClient): GistService {
 
         val retrofit = Retrofit.Builder()
                 .client(client)
@@ -55,7 +55,7 @@ class AppModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
 
-        return retrofit.create(Api::class.java)
+        return retrofit.create(GistService::class.java)
     }
 
     @Provides

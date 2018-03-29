@@ -33,11 +33,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         binding.setLifecycleOwner(this)
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadGists()
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.navigation_home -> {

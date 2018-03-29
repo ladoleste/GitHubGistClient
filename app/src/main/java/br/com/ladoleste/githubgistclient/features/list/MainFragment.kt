@@ -32,10 +32,11 @@ class MainFragment : Fragment(), ItemClick {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.setLifecycleOwner(this)
+        var page = 1
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.rvListing.layoutManager = linearLayoutManager
         loadingScrollListener = LoadingScrollListener({
-            //presenter.loadGist(false)
+            model.loadGists(++page)
         }, linearLayoutManager)
         return binding.root
     }

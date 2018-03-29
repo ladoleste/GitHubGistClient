@@ -7,6 +7,6 @@ import io.reactivex.Single
  * Created by Anderson on 23/03/2018
  */
 interface GistRepository {
-    fun getGists(): Single<List<Gist>>
+    fun getGists(page: Int): Single<List<Gist>>
     fun getGist(id: String): Single<Gist>
 }
