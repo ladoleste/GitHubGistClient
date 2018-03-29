@@ -10,8 +10,6 @@ import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.addFragment
 import br.com.ladoleste.githubgistclient.common.replaceFragment
 import br.com.ladoleste.githubgistclient.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.inc_toolbar.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -25,8 +23,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        navigation.setOnNavigationItemSelectedListener(this)
-        setSupportActionBar(toolbar)
+        binding.navigation.setOnNavigationItemSelectedListener(this)
+        setSupportActionBar(binding.incToolbar.toolbar)
 
         addFragment(fragMain, R.id.container)
 

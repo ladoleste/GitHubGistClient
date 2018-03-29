@@ -36,7 +36,8 @@ data class Gist(
     val languages: String
         get() {
             var str = "Languages: "
-            files.forEach { str = str + ", " + it.value.language }
-            return str.replace(": , ", ": ").replace("null", "[unknown]")
+            val distinct = files.map { it.value.language }.toList().distinct()
+            distinct.forEach { str = "$str, $it" }
+            return str.replace(": , ", ": ").replace("null", "")
         }
 }

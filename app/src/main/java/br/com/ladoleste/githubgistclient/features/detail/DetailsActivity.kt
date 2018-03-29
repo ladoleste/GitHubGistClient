@@ -11,13 +11,13 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.Util.getBitmapFromVectorDrawable
 import br.com.ladoleste.githubgistclient.common.getErrorMessage
 import br.com.ladoleste.githubgistclient.databinding.ActivityDetailsBinding
 import br.com.ladoleste.githubgistclient.features.detail.customtabs.CustomTabsHelper
-import kotlinx.android.synthetic.main.inc_toolbar.*
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class DetailsActivity : AppCompatActivity() {
         model = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
         binding.model = model
         binding.setLifecycleOwner(this)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.incToolbar.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val backArrow = getBitmapFromVectorDrawable(R.drawable.ic_arrow_back_white, this)
@@ -48,12 +48,7 @@ class DetailsActivity : AppCompatActivity() {
         model.files.observe(this, Observer {
             it?.let {
 
-                if (it.size == 1) {
-                    val file = it[it.keys.first()]
-                    val rawUrl = file?.rawUrl
-                    val uri = Uri.parse(rawUrl)
-                    CustomTabsHelper().mayLaunchUrl(uri)
-                }
+                CustomTabsHelper().mayLaunchUrl(Uri.parse(it[it.keys.first()]?.rawUrl))
 
                 binding.llContainer.removeAllViews()
 
@@ -67,6 +62,8 @@ class DetailsActivity : AppCompatActivity() {
                     binding.llContainer.addView(btFile)
                 }
             }
+
+            binding.loading.visibility = View.GONE
         })
 
         model.gistError.observe(this, Observer(this::handleError))
