@@ -35,6 +35,7 @@ class MainFragment : Fragment(), ItemClick {
         var page = 1
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.rvListing.layoutManager = linearLayoutManager
+        binding.rvListing.setHasFixedSize(true)
         loadingScrollListener = LoadingScrollListener({
             model.loadGists(++page)
         }, linearLayoutManager)

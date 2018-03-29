@@ -31,7 +31,6 @@ class DetailsActivity : AppCompatActivity() {
         model = ViewModelProviders.of(this).get(DetailsViewModel::class.java)
         binding.model = model
         binding.setLifecycleOwner(this)
-        model.loadGist((intent.getStringExtra("id")))
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -56,9 +55,11 @@ class DetailsActivity : AppCompatActivity() {
                     CustomTabsHelper().mayLaunchUrl(uri)
                 }
 
+                binding.llContainer.removeAllViews()
+
                 it.forEach {
                     val file = it.value
-                    val btFile = layoutInflater.inflate(R.layout.item_button, binding.rootView, false) as Button
+                    val btFile = layoutInflater.inflate(R.layout.item_button, binding.llContainer, false) as Button
                     btFile.setOnClickListener {
                         CustomTabsHelper.openCustomTab(this, customTabsIntent, Uri.parse(file.rawUrl), null)
                     }
@@ -69,6 +70,12 @@ class DetailsActivity : AppCompatActivity() {
         })
 
         model.gistError.observe(this, Observer(this::handleError))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        model.loadGist((intent.getStringExtra("id")))
+//        model.loadGist("8fcccd4d54ec298e3b120cbc1230c02a")
     }
 
     private fun handleError(it: Throwable?) {

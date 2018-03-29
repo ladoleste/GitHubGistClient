@@ -13,6 +13,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "API_URL", "\"https://api.github.com/\""
+//        buildConfigField "String", "API_URL", "\"https://777372db-657d-45d8-9620-9ce141285581.mock.pstmn.io/\""
     }
 
     signingConfigs {
