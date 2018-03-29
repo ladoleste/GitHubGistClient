@@ -9,7 +9,7 @@ import java.util.*
  * Created by Anderson on 27/03/2018.
  */
 
-data class GistResponse(
+data class Gist(
         @SerializedName("url") val url: String,
         @SerializedName("forks_url") val forksUrl: String,
         @SerializedName("commits_url") val commitsUrl: String,
@@ -31,4 +31,6 @@ data class GistResponse(
         @SerializedName("truncated") val truncated: Boolean
 ) {
     val created get() = createdAt.toString("dd/MM/yyyy HH:mm")
+    val author get() = "Author: ${owner.login}"
+    val title get() = if (description.isEmpty()) "no title" else description
 }

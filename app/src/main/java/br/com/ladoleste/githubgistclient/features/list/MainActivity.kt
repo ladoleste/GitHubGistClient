@@ -1,6 +1,5 @@
 package br.com.ladoleste.githubgistclient.features.list
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.View
 import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.addFragment
 import br.com.ladoleste.githubgistclient.common.getErrorMessage
@@ -16,7 +14,6 @@ import br.com.ladoleste.githubgistclient.common.replaceFragment
 import br.com.ladoleste.githubgistclient.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.inc_toolbar.*
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -35,25 +32,12 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         addFragment(fragMain, R.id.container)
 
-        viewModel.gists.observe(this, Observer {
-            loading.visibility = View.GONE
-            //showList(it)
-        })
-
-        viewModel.created.observe(this, Observer { Timber.d(it) })
-
-        viewModel.gistsError.observe(this, Observer {
-            loading.visibility = View.GONE
-            handleError(it)
-        })
-
         binding.setLifecycleOwner(this)
     }
 
     private fun handleError(it: Throwable?) {
         Snackbar.make(root_view, it.getErrorMessage(), Snackbar.LENGTH_INDEFINITE)
                 .setAction(R.string.retry) {
-                    loading.visibility = View.VISIBLE
                     viewModel.loadGists()
                 }
                 .show()
