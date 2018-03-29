@@ -2,6 +2,9 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <import type="br.com.ladoleste.githubgistclient.dto.Gist" />
         <variable
             name="gist"
             type="br.com.ladoleste.githubgistclient.dto.Gist" />
@@ -29,6 +32,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="@{gist.title}"
+                android:visibility="@{gist.hasTitle ? View.VISIBLE : View.GONE}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/iv_avatar"

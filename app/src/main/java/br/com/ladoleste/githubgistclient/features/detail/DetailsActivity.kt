@@ -1,6 +1,5 @@
 package br.com.ladoleste.githubgistclient.features.detail
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -24,7 +23,6 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var model: DetailsViewModel
     private lateinit var binding: ActivityDetailsBinding
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_details)
@@ -66,7 +64,11 @@ class DetailsActivity : AppCompatActivity() {
             binding.loading.visibility = View.GONE
         })
 
+        binding.swFavorites.setOnClickListener {
+            model.addToFavorites()
+        }
         model.gistError.observe(this, Observer(this::handleError))
+
     }
 
     override fun onResume() {

@@ -10,6 +10,8 @@ import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.addFragment
 import br.com.ladoleste.githubgistclient.common.replaceFragment
 import br.com.ladoleste.githubgistclient.databinding.ActivityMainBinding
+import br.com.ladoleste.githubgistclient.features.about.AboutFragment
+import br.com.ladoleste.githubgistclient.features.favorites.FavoritesFragment
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 

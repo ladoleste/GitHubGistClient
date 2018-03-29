@@ -9,4 +9,6 @@ import io.reactivex.Single
 interface GistRepository {
     fun getGists(page: Int): Single<List<Gist>>
     fun getGist(id: String): Single<Gist>
+    fun getFavorites(): List<Gist>
+    fun addToFavorite(gist: Gist)
 }

@@ -22,7 +22,7 @@ import java.util.*
 
 fun ViewGroup.inflate(layoutId: Int): View = LayoutInflater.from(context).inflate(layoutId, this, false)
 
-fun ImageView.loadImage(imageUrl: String) {
+fun ImageView.loadImage(imageUrl: String?) {
     if (context is Activity) {
         val act = context as Activity
         if (!act.isFinishing && !act.isDestroyed)
