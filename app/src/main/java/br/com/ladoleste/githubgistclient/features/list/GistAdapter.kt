@@ -18,7 +18,9 @@ class GistAdapter(private var items: List<Gist>, private val itemClick: ItemClic
     }
 
     override fun onBindViewHolder(holder: GistAdapter.ViewHolder, position: Int) {
-        holder.bind(items[position])
+        val gist = items[position]
+        holder.itemView.setOnClickListener { itemClick.onItemClick(gist) }
+        holder.bind(gist)
     }
 
     class ViewHolder(private val binding: ItemGistBinding) : RecyclerView.ViewHolder(binding.root) {

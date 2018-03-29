@@ -4,12 +4,10 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.addFragment
-import br.com.ladoleste.githubgistclient.common.getErrorMessage
 import br.com.ladoleste.githubgistclient.common.replaceFragment
 import br.com.ladoleste.githubgistclient.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,31 +32,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         binding.setLifecycleOwner(this)
     }
-
-    private fun handleError(it: Throwable?) {
-        Snackbar.make(root_view, it.getErrorMessage(), Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.retry) {
-                    viewModel.loadGists()
-                }
-                .show()
-    }
-
-    //    private fun showList(it: List<GistResponse>?) {
-//        it?.let {
-//            fragMain.showMessage(it.first())
-//            Timber.d(it.first().toString())
-//        } ?: Timber.d("Empty")
-//    }
-//
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadGists()
-    }
-//
-//    override fun onDestroy() {
-//        viewModel.dispose()
-//        super.onDestroy()
-//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

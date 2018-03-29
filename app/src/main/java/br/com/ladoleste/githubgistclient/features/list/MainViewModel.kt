@@ -24,8 +24,8 @@ class MainViewModel : BaseViewModel() {
         CustomApplication.component.inject(this)
     }
 
-    fun loadGists() {
-        cDispose.add(repo.getGists()
+    fun loadGists(page: Int = 1) {
+        cDispose.add(repo.getGists(page)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError({ t -> Timber.e(t) })
                 .subscribe({
