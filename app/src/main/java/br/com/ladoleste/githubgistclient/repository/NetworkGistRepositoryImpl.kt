@@ -2,7 +2,6 @@ package br.com.ladoleste.githubgistclient.repository
 
 import br.com.ladoleste.githubgistclient.common.Api
 import br.com.ladoleste.githubgistclient.common.CustomApplication
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -19,5 +18,5 @@ class NetworkGistRepositoryImpl : GistRepository {
 
     override fun getGists() = api.getGists()
 
-    override fun getGist(id: UUID) = api.getGist(id)
+    override fun getGist(id: String) = api.getGist(id)
 }
