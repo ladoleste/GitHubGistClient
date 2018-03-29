@@ -17,7 +17,7 @@ data class Gist(
         @SerializedName("git_pull_url") val gitPullUrl: String,
         @SerializedName("git_push_url") val gitPushUrl: String,
         @SerializedName("html_url") val htmlUrl: String,
-        @SerializedName("files") val files: Files,
+        @SerializedName("files") private val files: Map<String, File>,
         @SerializedName("public") val public: Boolean,
         @SerializedName("created_at") private val createdAt: Date,
         @SerializedName("updated_at") val updatedAt: Date,
@@ -32,5 +32,11 @@ data class Gist(
 ) {
     val created get() = createdAt.toString("dd/MM/yyyy HH:mm")
     val author get() = "Author: ${owner.login}"
-    val title get() = if (description.isEmpty()) "no title" else description
+    val title get() = if (description.isEmpty()) "[no title]" else description
+    val languages: String
+        get() {
+            var str = "Languages: "
+            files.forEach { str = str + ", " + it.value.language }
+            return str.replace(": , ", ": ").replace("null", "[unknown]")
+        }
 }
