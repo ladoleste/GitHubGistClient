@@ -1,9 +1,13 @@
 package br.com.ladoleste.githubgistclient.dagger
 
+import android.arch.persistence.room.Room
 import br.com.ladoleste.githubgistclient.BuildConfig
-import br.com.ladoleste.githubgistclient.common.Api
+import br.com.ladoleste.githubgistclient.common.CustomApplication
+import br.com.ladoleste.githubgistclient.common.CustomApplication.Companion.apiUrl
+import br.com.ladoleste.githubgistclient.common.GistService
 import br.com.ladoleste.githubgistclient.repository.GistRepository
-import br.com.ladoleste.githubgistclient.repository.NetworkGistRepositoryImpl
+import br.com.ladoleste.githubgistclient.repository.GistRepositoryImpl
+import br.com.ladoleste.githubgistclient.repository.room.MyDatabase
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -46,20 +50,25 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideApi(gson: Gson, client: OkHttpClient): Api {
+    fun provideApi(gson: Gson, client: OkHttpClient): GistService {
 
         val retrofit = Retrofit.Builder()
                 .client(client)
-                .baseUrl(BuildConfig.API_URL)
+                .baseUrl(apiUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()
 
-        return retrofit.create(Api::class.java)
+        return retrofit.create(GistService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideRepository(): GistRepository = NetworkGistRepositoryImpl()
+    fun provideRepository(): GistRepository = GistRepositoryImpl()
 
+    @Provides
+    @Singleton
+    fun provideDatabase() = Room.databaseBuilder(CustomApplication.instance, MyDatabase::class.java, "gistdb")
+            .allowMainThreadQueries()
+            .build()
 }
