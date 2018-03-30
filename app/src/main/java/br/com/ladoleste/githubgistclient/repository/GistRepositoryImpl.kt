@@ -20,16 +20,19 @@ class GistRepositoryImpl : GistRepository {
         CustomApplication.component.inject(this)
     }
 
-
     override fun getGists(page: Int) = gistService.getGists(page)
 
     override fun getGist(id: String) = gistService.getGist(id)
 
-    override fun getFavorites(): List<Gist> {
-        return db.gistDao().loadFavoriteGists()
-    }
+    override fun getFavorites() = db.gistDao().loadFavoriteGists()
 
     override fun addToFavorite(gist: Gist) {
         db.gistDao().insert(gist)
     }
+
+    override fun removeFromFavorites(gist: Gist) {
+        db.gistDao().delete(gist)
+    }
+
+    override fun isFavorite(id: String) = db.gistDao().isFavorite(id)
 }

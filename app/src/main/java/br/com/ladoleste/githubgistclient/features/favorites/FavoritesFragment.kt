@@ -4,14 +4,11 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.ladoleste.githubgistclient.R
-import br.com.ladoleste.githubgistclient.common.getErrorMessage
 import br.com.ladoleste.githubgistclient.databinding.FragmentFavoritesBinding
 import br.com.ladoleste.githubgistclient.dto.Gist
 import br.com.ladoleste.githubgistclient.features.common.ItemClick
@@ -40,27 +37,24 @@ class FavoritesFragment : Fragment(), ItemClick {
         super.onActivityCreated(savedInstanceState)
         model = ViewModelProviders.of(activity!!).get(FavoritesViewModel::class.java)
         binding.model = model
-
-        model.gists.observe(this, Observer {
-            binding.loading.visibility = View.GONE
-            showList(it)
-        })
-
-        model.gistsError.observe(this, Observer(this::handleError))
+//        model.gistsError.observe(this, Observer(this::handleError))
     }
 
     override fun onResume() {
         super.onResume()
-        model.loadFavorites()
+        model.loadFavorites().observe(this, Observer {
+            binding.loading.visibility = View.GONE
+            showList(it)
+        })
     }
 
-    private fun handleError(it: Throwable?) {
-        Snackbar.make(binding.rootView, it.getErrorMessage(), Snackbar.LENGTH_INDEFINITE)
-                .setAction(R.string.retry) {
-                    model.loadFavorites()
-                }
-                .show()
-    }
+//    private fun handleError(it: Throwable?) {
+//        Snackbar.make(binding.rootView, it.getErrorMessage(), Snackbar.LENGTH_INDEFINITE)
+//                .setAction(R.string.retry) {
+//                    model.loadFavorites()
+//                }
+//                .show()
+//    }
 
     private fun showList(it: List<Gist>?) {
 

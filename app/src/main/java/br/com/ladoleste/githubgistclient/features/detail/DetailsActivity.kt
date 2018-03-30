@@ -65,7 +65,11 @@ class DetailsActivity : AppCompatActivity() {
         })
 
         binding.swFavorites.setOnClickListener {
-            model.addToFavorites()
+            if (binding.swFavorites.isChecked) {
+                model.addToFavorites()
+            } else {
+                model.removeFromFavorites()
+            }
         }
         model.gistError.observe(this, Observer(this::handleError))
 
