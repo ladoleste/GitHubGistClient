@@ -3,6 +3,7 @@ package br.com.ladoleste.githubgistclient.dagger
 import android.arch.persistence.room.Room
 import br.com.ladoleste.githubgistclient.BuildConfig
 import br.com.ladoleste.githubgistclient.common.CustomApplication
+import br.com.ladoleste.githubgistclient.common.CustomApplication.Companion.apiUrl
 import br.com.ladoleste.githubgistclient.common.GistService
 import br.com.ladoleste.githubgistclient.repository.GistRepository
 import br.com.ladoleste.githubgistclient.repository.GistRepositoryImpl
@@ -53,7 +54,7 @@ class AppModule {
 
         val retrofit = Retrofit.Builder()
                 .client(client)
-                .baseUrl(BuildConfig.API_URL)
+                .baseUrl(apiUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()

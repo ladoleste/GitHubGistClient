@@ -37,7 +37,6 @@ class FavoritesFragment : Fragment(), ItemClick {
         super.onActivityCreated(savedInstanceState)
         model = ViewModelProviders.of(activity!!).get(FavoritesViewModel::class.java)
         binding.model = model
-//        model.gistsError.observe(this, Observer(this::handleError))
     }
 
     override fun onResume() {
@@ -48,22 +47,21 @@ class FavoritesFragment : Fragment(), ItemClick {
         })
     }
 
-//    private fun handleError(it: Throwable?) {
-//        Snackbar.make(binding.rootView, it.getErrorMessage(), Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry) {
-//                    model.loadFavorites()
-//                }
-//                .show()
-//    }
-
     private fun showList(it: List<Gist>?) {
-
         it?.let {
-            if (binding.rvListing.adapter == null) {
-                favoritesAdapter = FavoritesAdapter(it, this)
-                binding.rvListing.adapter = favoritesAdapter
+            if (it.isEmpty()) {
+                binding.rvListing.visibility = View.GONE
+                binding.tvNoFavorites.visibility = View.VISIBLE
             } else {
-                favoritesAdapter.updateItems(it)
+                binding.rvListing.visibility = View.VISIBLE
+                binding.tvNoFavorites.visibility = View.GONE
+
+                if (binding.rvListing.adapter == null) {
+                    favoritesAdapter = FavoritesAdapter(it, this)
+                    binding.rvListing.adapter = favoritesAdapter
+                } else {
+                    favoritesAdapter.updateItems(it)
+                }
             }
         }
     }
