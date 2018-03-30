@@ -16,6 +16,7 @@ import br.com.ladoleste.githubgistclient.features.favorites.FavoritesFragment
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
     private val fragMain = MainFragment()
     private val fragFav = FavoritesFragment()
     private val fragAbout = AboutFragment()
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         binding.navigation.setOnNavigationItemSelectedListener(this)
         setSupportActionBar(binding.incToolbar.toolbar)
@@ -36,14 +37,17 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.navigation_home -> {
+                binding.incToolbar.toolbar.title = getString(R.string.app_name)
                 replaceFragment(fragMain, R.id.container)
                 return true
             }
             R.id.navigation_favorites -> {
+                binding.incToolbar.toolbar.title = getString(R.string.title_favorites)
                 replaceFragment(fragFav, R.id.container)
                 return true
             }
             R.id.navigation_about -> {
+                binding.incToolbar.toolbar.title = getString(R.string.title_about)
                 replaceFragment(fragAbout, R.id.container)
                 return true
             }

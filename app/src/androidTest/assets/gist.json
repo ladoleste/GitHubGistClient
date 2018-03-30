@@ -1,0 +1,196 @@
+{
+  "url": "https://api.github.com/gists/fe558040e7762a202c41347a66521495",
+  "forks_url": "https://api.github.com/gists/fe558040e7762a202c41347a66521495/forks",
+  "commits_url": "https://api.github.com/gists/fe558040e7762a202c41347a66521495/commits",
+  "id": "fe558040e7762a202c41347a66521495",
+  "git_pull_url": "https://gist.github.com/fe558040e7762a202c41347a66521495.git",
+  "git_push_url": "https://gist.github.com/fe558040e7762a202c41347a66521495.git",
+  "html_url": "https://gist.github.com/fe558040e7762a202c41347a66521495",
+  "files": {
+    "# php@7.1 - 2018-03-29_14-49-54.txt": {
+      "filename": "# php@7.1 - 2018-03-29_14-49-54.txt",
+      "type": "text/plain",
+      "language": "Text",
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/ff72a7cd4f461f7a9e7f9c4ab5d05448afed96f0/%23%20php@7.1%20-%202018-03-29_14-49-54.txt",
+      "size": 81,
+      "truncated": false,
+      "content": "Homebrew build logs for php@7.1 on macOS 10.13.3\nBuild date: 2018-03-29 14:49:54\n"
+    },
+    "00.config.out": {
+      "filename": "00.config.out",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/d41d88ed12073db987648a358fb30db294a4bb2c/00.config.out",
+      "size": 966,
+      "truncated": false,
+      "content": "HOMEBREW_VERSION: 1.5.13-6-g6654ff6\nORIGIN: https://github.com/Homebrew/brew.git\nHEAD: 6654ff6e13a47d2e19c4591b5028e615bb6a738d\nLast commit: 5 hours ago\nCore tap ORIGIN: https://github.com/Homebrew/homebrew-core\nCore tap HEAD: 60a65399e4472efb32d1a2453b1bf4401243016d\nCore tap last commit: 10 minutes ago\nHOMEBREW_PREFIX: /usr/local\nHOMEBREW_DEV_CMD_RUN: 1\nHOMEBREW_GITHUB_API_TOKEN: set\nCPU: quad-core 64-bit broadwell\nHomebrew Ruby: 2.3.3 => /usr/local/Homebrew/Library/Homebrew/vendor/portable-ruby/2.3.3/bin/ruby\nClang: 9.0 build 900\nGit: 2.14.3 => /Library/Developer/CommandLineTools/usr/bin/git\nCurl: 7.54.0 => /usr/bin/curl\nPerl: /usr/bin/perl\nPython: /usr/local/opt/python/libexec/bin/python => /usr/local/Cellar/python/3.6.4_4/Frameworks/Python.framework/Versions/3.6/bin/python3.6\nRuby: /usr/bin/ruby => /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby\nJava: 1.8.0_121\nmacOS: 10.13.3-x86_64\nXcode: N/A\nCLT: 9.2.0.0.1.1510905681\nX11: N/A\n"
+    },
+    "00.doctor.out": {
+      "filename": "00.doctor.out",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/946c9bc5d6d50c2bf416bc4db891f21741e20383/00.doctor.out",
+      "size": 30,
+      "truncated": false,
+      "content": "Your system is ready to brew.\n"
+    },
+    "post_install.01.pear": {
+      "filename": "post_install.01.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/d105e097a5647c76e88f5b53512dc02fa0de0b99/post_install.01.pear",
+      "size": 1020,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nphp_ini\n/usr/local/etc/php/7.1/php.ini\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.02.pear": {
+      "filename": "post_install.02.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/5df4b5f7b139ec6724ef7e30d5ab3c155cfee1e3/post_install.02.pear",
+      "size": 1011,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nphp_dir\n/usr/local/share/pear\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.03.pear": {
+      "filename": "post_install.03.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/8cbebcf8db72d97fe7011137bfb3547db8415834/post_install.03.pear",
+      "size": 1015,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\ndoc_dir\n/usr/local/share/pear/doc\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.04.pear": {
+      "filename": "post_install.04.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/e8cdadb22ff1792547e6cd26bea0cde407d29bd9/post_install.04.pear",
+      "size": 1022,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\next_dir\n/usr/local/lib/php/pecl/20160303\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.05.pear": {
+      "filename": "post_install.05.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/bdd9aa3b269bbbc17e914f57250855d9664d299f/post_install.05.pear",
+      "size": 1016,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nbin_dir\n/usr/local/opt/php@7.1/bin\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.06.pear": {
+      "filename": "post_install.06.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/74949b74a2a1fa049dab554e3baa4f811d94be95/post_install.06.pear",
+      "size": 1017,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\ndata_dir\n/usr/local/share/pear/data\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.07.pear": {
+      "filename": "post_install.07.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/ca1ae2eef855d9b2d29ec5d61cc5e1fe83a7d425/post_install.07.pear",
+      "size": 1015,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\ncfg_dir\n/usr/local/share/pear/cfg\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.08.pear": {
+      "filename": "post_install.08.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/4c4434b6862de9c30cf67e6f19436bc1f228cd9d/post_install.08.pear",
+      "size": 1018,
+      "truncated": false,
+      "content": "2018-03-29 15:00:22 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nwww_dir\n/usr/local/share/pear/htdocs\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.09.pear": {
+      "filename": "post_install.09.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/548ae9e1a61f24445db642815a13f0748c0e0e05/post_install.09.pear",
+      "size": 1010,
+      "truncated": false,
+      "content": "2018-03-29 15:00:23 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nman_dir\n/usr/local/share/man\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.10.pear": {
+      "filename": "post_install.10.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/44e2a553c5bfff9e9db1826323a2c9bebcb30d93/post_install.10.pear",
+      "size": 1017,
+      "truncated": false,
+      "content": "2018-03-29 15:00:23 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\ntest_dir\n/usr/local/share/pear/test\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    },
+    "post_install.11.pear": {
+      "filename": "post_install.11.pear",
+      "type": "text/plain",
+      "language": null,
+      "raw_url": "https://gist.githubusercontent.com/aivus/fe558040e7762a202c41347a66521495/raw/b3b187133ceafca87c6dedbe7de7e3b25e6ba05a/post_install.11.pear",
+      "size": 1020,
+      "truncated": false,
+      "content": "2018-03-29 15:00:23 +0300\n\n/usr/local/Cellar/php@7.1/7.1.15/bin/pear\nconfig-set\nphp_bin\n/usr/local/opt/php@7.1/bin/php\nsystem\n\nPHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\nPHP Warning:  Module 'mcrypt' already loaded in Unknown on line 0\nPHP Warning:  Module 'pdo_pgsql' already loaded in Unknown on line 0\n\nWarning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php71-intl/intl.so' - dlopen(/usr/local/opt/php71-intl/intl.so, 9): Library not loaded: /usr/local/opt/icu4c/lib/libicui18n.60.dylib\n  Referenced from: /usr/local/opt/php71-intl/intl.so\n  Reason: image not found in Unknown on line 0\n\nWarning: Module 'mcrypt' already loaded in Unknown on line 0\n\nWarning: Module 'pdo_pgsql' already loaded in Unknown on line 0\nconfig-set succeeded\n"
+    }
+  },
+  "public": true,
+  "created_at": "2018-03-29T12:10:36Z",
+  "updated_at": "2018-03-29T12:10:36Z",
+  "description": "RxJava",
+  "comments": 0,
+  "user": null,
+  "comments_url": "https://api.github.com/gists/fe558040e7762a202c41347a66521495/comments",
+  "owner": {
+    "login": "aivus",
+    "id": 1021703,
+    "avatar_url": "https://avatars1.githubusercontent.com/u/1021703?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/aivus",
+    "html_url": "https://github.com/aivus",
+    "followers_url": "https://api.github.com/users/aivus/followers",
+    "following_url": "https://api.github.com/users/aivus/following{/other_user}",
+    "gists_url": "https://api.github.com/users/aivus/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/aivus/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/aivus/subscriptions",
+    "organizations_url": "https://api.github.com/users/aivus/orgs",
+    "repos_url": "https://api.github.com/users/aivus/repos",
+    "events_url": "https://api.github.com/users/aivus/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/aivus/received_events",
+    "type": "User",
+    "site_admin": false
+  },
+  "forks": [],
+  "history": [
+    {
+      "user": {
+        "login": "aivus",
+        "id": 1021703,
+        "avatar_url": "https://avatars1.githubusercontent.com/u/1021703?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/aivus",
+        "html_url": "https://github.com/aivus",
+        "followers_url": "https://api.github.com/users/aivus/followers",
+        "following_url": "https://api.github.com/users/aivus/following{/other_user}",
+        "gists_url": "https://api.github.com/users/aivus/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/aivus/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/aivus/subscriptions",
+        "organizations_url": "https://api.github.com/users/aivus/orgs",
+        "repos_url": "https://api.github.com/users/aivus/repos",
+        "events_url": "https://api.github.com/users/aivus/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/aivus/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "version": "3e708e3ab68608f54e66016f4349c9fe3f3d671d",
+      "committed_at": "2018-03-29T12:10:35Z",
+      "change_status": {
+        "total": 268,
+        "additions": 268,
+        "deletions": 0
+      },
+      "url": "https://api.github.com/gists/fe558040e7762a202c41347a66521495/3e708e3ab68608f54e66016f4349c9fe3f3d671d"
+    }
+  ],
+  "truncated": false
+}

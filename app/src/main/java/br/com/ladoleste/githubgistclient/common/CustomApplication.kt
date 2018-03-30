@@ -27,5 +27,7 @@ class CustomApplication : Application() {
 
         lateinit var component: AppComponent
             private set
+
+        var apiUrl: String = BuildConfig.API_URL
     }
 }

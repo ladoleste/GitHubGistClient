@@ -12,10 +12,10 @@ import com.google.gson.reflect.TypeToken
 class MyConverters {
 
     @TypeConverter
-    fun fileToString(file: Map<String, File>): String = Gson().toJson(file)
+    fun fileToString(file: Map<String, File>?): String? = Gson().toJson(file)
 
     @TypeConverter
-    fun stringToFile(str: String): Map<String, File>? {
+    fun stringToFile(str: String?): Map<String, File>? {
         val type = object : TypeToken<Map<String, File>>() {}.type
         return Gson().fromJson<Map<String, File>>(str, type)
     }

@@ -13,8 +13,6 @@ class FavoritesViewModel : BaseViewModel() {
     @Inject
     lateinit var repo: GistRepository
 
-//    val gistsError = MutableLiveData<Throwable>()
-
     init {
         CustomApplication.component.inject(this)
     }
