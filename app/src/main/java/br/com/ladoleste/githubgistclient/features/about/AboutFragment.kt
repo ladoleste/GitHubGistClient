@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import br.com.ladoleste.githubgistclient.R
+import br.com.ladoleste.githubgistclient.common.Util
 import br.com.ladoleste.githubgistclient.databinding.FragmentAboutBinding
 
 
@@ -16,18 +19,14 @@ class AboutFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentAboutBinding.inflate(inflater, container, false)
-        var html = ""
-        try {
-            val res = resources
-            val ins = res.openRawResource(R.raw.about)
-            val b = ByteArray(ins.available())
-            ins.read(b)
-            html = String(b)
-        } catch (_: Exception) {
 
+        binding.webView.loadData(Util.readRawFile(R.raw.about), "text/html; charset=UTF-8", null)
+
+        binding.webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                binding.loading.visibility = View.GONE
+            }
         }
-
-        binding.webView.loadData(html, "text/html; charset=UTF-8", null)
 
         return binding.root
     }

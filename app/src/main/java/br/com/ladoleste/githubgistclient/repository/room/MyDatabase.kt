@@ -9,7 +9,7 @@ import br.com.ladoleste.githubgistclient.dto.Gist
 /**
  * Created by Anderson on 29/03/2018.
  */
-@Database(entities = [(Gist::class)], version = 2)
+@Database(entities = [(Gist::class)], version = 1)
 @TypeConverters(MyConverters::class)
 abstract class MyDatabase : RoomDatabase() {
     internal abstract fun gistDao(): GistDao

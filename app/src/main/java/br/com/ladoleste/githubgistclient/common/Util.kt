@@ -21,4 +21,18 @@ object Util {
         drawable.draw(canvas)
         return bitmap
     }
+
+    fun readRawFile(file: Int): String {
+
+        try {
+            val res = CustomApplication.instance.resources
+            val ins = res.openRawResource(file)
+            val b = ByteArray(ins.available())
+            ins.read(b)
+            return String(b)
+        } catch (_: Exception) {
+
+        }
+        return ""
+    }
 }
