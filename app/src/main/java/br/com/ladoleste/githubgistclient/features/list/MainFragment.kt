@@ -15,6 +15,8 @@ import br.com.ladoleste.githubgistclient.R
 import br.com.ladoleste.githubgistclient.common.getErrorMessage
 import br.com.ladoleste.githubgistclient.databinding.FragmentMainBinding
 import br.com.ladoleste.githubgistclient.dto.Gist
+import br.com.ladoleste.githubgistclient.features.common.EndlessRecyclerViewScrollListener
+import br.com.ladoleste.githubgistclient.features.common.ItemClick
 import br.com.ladoleste.githubgistclient.features.detail.DetailsActivity
 
 class MainFragment : Fragment(), ItemClick {

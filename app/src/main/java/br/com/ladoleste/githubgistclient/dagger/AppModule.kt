@@ -1,9 +1,12 @@
 package br.com.ladoleste.githubgistclient.dagger
 
+import android.arch.persistence.room.Room
 import br.com.ladoleste.githubgistclient.BuildConfig
+import br.com.ladoleste.githubgistclient.common.CustomApplication
 import br.com.ladoleste.githubgistclient.common.GistService
 import br.com.ladoleste.githubgistclient.repository.GistRepository
-import br.com.ladoleste.githubgistclient.repository.NetworkGistRepositoryImpl
+import br.com.ladoleste.githubgistclient.repository.GistRepositoryImpl
+import br.com.ladoleste.githubgistclient.repository.room.MyDatabase
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -60,6 +63,11 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(): GistRepository = NetworkGistRepositoryImpl()
+    fun provideRepository(): GistRepository = GistRepositoryImpl()
 
+    @Provides
+    @Singleton
+    fun provideDatabase() = Room.databaseBuilder(CustomApplication.instance, MyDatabase::class.java, "gistdb")
+            .allowMainThreadQueries()
+            .build()
 }

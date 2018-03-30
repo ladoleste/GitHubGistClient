@@ -1,4 +1,4 @@
-package br.com.ladoleste.githubgistclient.features.list;
+package br.com.ladoleste.githubgistclient.features.common;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;

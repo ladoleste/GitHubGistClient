@@ -8,7 +8,9 @@
         android:layout_height="match_parent"
         tools:context=".features.list.MainActivity">
 
-        <include layout="@layout/inc_toolbar" />
+        <include
+            android:id="@+id/inc_toolbar"
+            layout="@layout/inc_toolbar" />
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"

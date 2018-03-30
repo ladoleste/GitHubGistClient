@@ -1,42 +1,49 @@
 package br.com.ladoleste.githubgistclient.dto
 
-import br.com.ladoleste.githubgistclient.common.toString
+import android.arch.persistence.room.Embedded
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 
 /**
  * Created by Anderson on 27/03/2018.
  */
-
+@Entity
 data class Gist(
-        @SerializedName("url") val url: String,
-        @SerializedName("forks_url") val forksUrl: String,
-        @SerializedName("commits_url") val commitsUrl: String,
-        @SerializedName("id") val id: String,
-        @SerializedName("git_pull_url") val gitPullUrl: String,
-        @SerializedName("git_push_url") val gitPushUrl: String,
-        @SerializedName("html_url") val htmlUrl: String,
-        @SerializedName("files") val files: Map<String, File>,
-        @SerializedName("public") val public: Boolean,
-        @SerializedName("created_at") private val createdAt: Date,
-        @SerializedName("updated_at") val updatedAt: Date,
-        @SerializedName("description") val description: String?,
-        @SerializedName("comments") val comments: Int,
-        @SerializedName("user") val user: Any,
-        @SerializedName("comments_url") val commentsUrl: String,
-        @SerializedName("owner") val owner: Owner,
-        @SerializedName("forks") val forks: List<Any>,
-        @SerializedName("history") val history: List<History>,
-        @SerializedName("truncated") val truncated: Boolean
+        @PrimaryKey
+        @SerializedName("id") var id: String = "",
+
+//        @SerializedName("url") var url: String = "",
+//        @SerializedName("forks_url") var forksUrl: String = "",
+//        @SerializedName("commits_url") var commitsUrl: String = "",
+//        @SerializedName("git_pull_url") var gitPullUrl: String = "",
+//        @SerializedName("git_push_url") var gitPushUrl: String = "",
+//        @SerializedName("html_url") var htmlUrl: String = "",
+        @SerializedName("files") var files: Map<String, File>? = null,
+//        @SerializedName("public") var public: Boolean = false,
+//        @SerializedName("created_at") var createdAt: Date = Date(),
+//        @SerializedName("updated_at") var updatedAt: Date = Date(),
+        @SerializedName("description") var description: String? = "",
+//        @SerializedName("comments") var comments: Int = 0,
+//        @SerializedName("user") var user: Any,
+//        @SerializedName("comments_url") var commentsUrl: String = "",
+        @Embedded(prefix = "owner")
+        @SerializedName("owner") var owner: Owner? = null
+//        @SerializedName("forks") var forks: List<Any>,
+//        @SerializedName("history") var history: List<History>,
+//        @SerializedName("truncated") var truncated: Boolean = false
 ) {
-    val created get() = createdAt.toString("dd/MM/yyyy HH:mm")
-    val author get() = "Author: ${owner.login}"
-    val title get() = if (description.isNullOrBlank()) "[no title]" else description
+    val author get() = "Author: ${owner?.login}"
+    val title get(): String = if (description.isNullOrBlank()) "" else description!!
+    val hasTitle get() = title.isNotBlank()
+    val isFavorite get() = false
     val languages: String
         get() {
+
             var str = "Languages: "
-            files.forEach { str = str + ", " + it.value.language }
-            return str.replace(": , ", ": ").replace("null", "[unknown]")
+            val distinct = files!!.map { it.value.language }.toList().distinct()
+            distinct.forEach { str = "$str, $it" }
+            return str.replace(": , ", ": ").replace("null", "")
         }
 }

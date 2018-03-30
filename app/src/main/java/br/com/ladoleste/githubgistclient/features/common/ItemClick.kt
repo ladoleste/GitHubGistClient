@@ -1,4 +1,4 @@
-package br.com.ladoleste.githubgistclient.features.list
+package br.com.ladoleste.githubgistclient.features.common
 
 import br.com.ladoleste.githubgistclient.dto.Gist
 

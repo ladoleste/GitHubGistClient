@@ -14,13 +14,16 @@ class CustomApplication : Application() {
         super.onCreate()
         Stetho.initializeWithDefaults(this)
         Timber.plant(if (BuildConfig.DEBUG) DebugLog() else ReleaseLog())
-
+        instance = this
         component = DaggerAppComponent.builder()
                 .appModule(AppModule())
                 .build()
     }
 
     companion object {
+
+        lateinit var instance: Application
+            private set
 
         lateinit var component: AppComponent
             private set

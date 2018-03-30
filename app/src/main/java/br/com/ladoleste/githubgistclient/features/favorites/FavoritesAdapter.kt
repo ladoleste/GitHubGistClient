@@ -1,4 +1,4 @@
-package br.com.ladoleste.githubgistclient.features.list
+package br.com.ladoleste.githubgistclient.features.favorites
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import br.com.ladoleste.githubgistclient.dto.Gist
 import br.com.ladoleste.githubgistclient.features.common.ItemClick
 
 
-class GistAdapter(_items: List<Gist>, private val itemClick: ItemClick) : RecyclerView.Adapter<GistAdapter.ViewHolder>() {
+class FavoritesAdapter(_items: List<Gist>, private val itemClick: ItemClick) : RecyclerView.Adapter<FavoritesAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Gist>()
 
@@ -24,7 +24,7 @@ class GistAdapter(_items: List<Gist>, private val itemClick: ItemClick) : Recycl
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: GistAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoritesAdapter.ViewHolder, position: Int) {
         val gist = items[position]
         holder.itemView.setOnClickListener { itemClick.onItemClick(gist) }
         holder.bind(gist)
@@ -40,6 +40,7 @@ class GistAdapter(_items: List<Gist>, private val itemClick: ItemClick) : Recycl
     }
 
     fun updateItems(it: List<Gist>) {
+        items.clear()
         items.addAll(it)
         notifyDataSetChanged()
     }

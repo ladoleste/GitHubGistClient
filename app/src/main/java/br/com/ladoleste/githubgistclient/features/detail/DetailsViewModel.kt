@@ -23,6 +23,8 @@ class DetailsViewModel : BaseViewModel() {
     val author = MutableLiveData<String>()
     val languages = MutableLiveData<String>()
     val avatarUrl = MutableLiveData<String>()
+    val isFavorite = MutableLiveData<Boolean>()
+    val hasTitle = MutableLiveData<Boolean>()
     val files = MutableLiveData<Map<String, File>>()
 
     val gistError = MutableLiveData<Throwable>()
@@ -31,16 +33,38 @@ class DetailsViewModel : BaseViewModel() {
         CustomApplication.component.inject(this)
     }
 
-    fun loadGist(id: String) = cDispose.add(repo.getGist(id)
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnError({ t -> Timber.e(t) }).subscribe({
-                gist.postValue(it)
-                title.postValue(it.title)
-                author.postValue(it.author)
-                languages.postValue(it.languages)
-                avatarUrl.postValue(it.owner.avatarUrl)
-                files.postValue(it.files)
-            }, {
-                gistError.postValue(it)
-            }))
+    fun loadGist(id: String) {
+
+        val favorite = repo.isFavorite(id)
+
+        cDispose.add(repo.getGist(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError({ t -> Timber.e(t) }).subscribe({
+                    gist.postValue(it)
+                    title.postValue(it.title)
+                    author.postValue(it.author)
+                    languages.postValue(it.languages)
+                    avatarUrl.postValue(it.owner?.avatarUrl)
+                    files.postValue(it.files)
+                    isFavorite.postValue(favorite)
+                    hasTitle.postValue(it.hasTitle)
+                }, {
+                    gistError.postValue(it)
+                }))
+    }
+    fun addToFavorites() {
+        try {
+            repo.addToFavorite(gist.value!!)
+        } catch (e: Exception) {
+            gistError.postValue(e)
+        }
+    }
+
+    fun removeFromFavorites() {
+        try {
+            repo.removeFromFavorites(gist.value!!)
+        } catch (e: Exception) {
+            gistError.postValue(e)
+        }
+    }
 }
