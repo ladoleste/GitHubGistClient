@@ -59,8 +59,8 @@ class InstrumentedTest {
         onView(withId(R.id.navigation_home)).perform(click())
         onView(withText(R.string.app_name)).check(matches(isDisplayed()))
 
-        onView(withRecyclerView(R.id.rv_listing).atPosition(0))
-                .check(matches(hasDescendant(withText("RxJava"))))
+        onView(withRecyclerView(R.id.rv_listing).atPosition(1))
+                .check(matches(hasDescendant(withText("Minimum Heap with Decrease Key In Javascript"))))
 
         onView(withRecyclerView(R.id.rv_listing).atPosition(0))
                 .perform(click())
